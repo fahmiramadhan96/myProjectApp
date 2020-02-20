@@ -1,8 +1,9 @@
 import * as React from "react"
-import { TextInput, View, Image } from "react-native"
+import { TextInput, View, Image, Text } from "react-native"
 import { NavigationInjectedProps } from "react-navigation";
 import LinearGradient from 'react-native-linear-gradient';
 import { styles } from "./style";
+import { Button } from "../button/button";
 
 
 
@@ -32,9 +33,19 @@ export class Login extends React.Component<LoginProps, LoginState> {
                         source={{ uri: 'https://media.giphy.com/media/eCCrSLD02Eyys/giphy.gif' }}
                     />
                     <TextInput
-                        style={[styles.textInput, styles.marginItem]} />
+                        style={[styles.textInput, styles.marginItem]}
+                        placeholder={"NIM"} />
                     <TextInput
-                        style={styles.textInput} />
+                        style={[styles.textInput]}
+                        secureTextEntry={true}
+                        placeholder={"Password"} />
+                    <Text style={[styles.forgotPassword]}>Forgot Password?</Text>
+                    <Button style={[styles.loginButton, styles.marginItem]}>
+                        <Text style={[styles.text]}>
+                            LOGIN
+                        </Text>
+                    </Button>
+                    <Text style={[styles.text]}>Create Account</Text>
                 </LinearGradient>
             </View>
         )

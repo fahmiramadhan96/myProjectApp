@@ -8,11 +8,11 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 
-export interface LoginScreenProps extends NavigationInjectedProps<{}> { }
-export interface LoginScreenState {
+export interface CreateAccountScreenProps extends NavigationInjectedProps<{}> { }
+export interface CreateAccountScreenState {
     spinner: boolean;
 }
-export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenState> {
+export class CreateAccountScreen extends React.Component<CreateAccountScreenProps, CreateAccountScreenState> {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,17 +23,6 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
     componentDidMount() {
 
     }
-    onButtonPress = () => {
-        firebaseService.auth()
-            .signInWithEmailAndPassword("bens@mailinator.com", "Welcome@123")
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                Alert.alert("Error");
-            });
-    }
-
     render() {
         return (
             <Screen
@@ -41,9 +30,7 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                <Login
-                    name="">
-                </Login>
+               <Text>CAS</Text>
             </Screen>
         )
     }
