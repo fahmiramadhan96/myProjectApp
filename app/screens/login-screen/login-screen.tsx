@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ActivityIndicator, ImageStyle, Platform, Text, View, ViewStyle, SafeAreaView, Alert } from "react-native"
-import { NavigationInjectedProps } from "react-navigation"
-import { Screen, Login } from "../../components";
+import { NavigationInjectedProps, StackActions, NavigationActions } from "react-navigation"
+import { Screen, Login } from "../../components"
 import firebaseService from "../../services/config/firebaseServices";
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -23,6 +23,17 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
     componentDidMount() {
 
     }
+
+    createAccountClick = () => {
+        console.log(this.props.navigation.state.routeName);
+        const resetAction = StackActions.reset({
+            index: 0,
+            key: undefined,
+            actions: [NavigationActions.navigate({ routeName: 'createAccount' })],
+        });
+        this.props.navigation.dispatch(resetAction)
+        // this.props.navigation.navigate('createAccount');
+    }
     onButtonPress = () => {
         firebaseService.auth()
             .signInWithEmailAndPassword("bens@mailinator.com", "Welcome@123")
@@ -42,7 +53,7 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
                     justifyContent: 'center'
                 }}>
                 <Login
-                    name="">
+                    createAccountClick={() => this.createAccountClick()}>
                 </Login>
             </Screen>
         )
