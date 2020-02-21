@@ -9,7 +9,7 @@ import { Button } from "../button/button";
 
 
 export interface LoginProps {
-    name: String;
+    createAccountClick: any;
 }
 export interface LoginState {
     spinner: boolean;
@@ -24,13 +24,17 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
     componentDidMount() { }
 
+    createAccountClick = () => {
+        this.props.createAccountClick();
+    }
+
     render() {
         return (
             <View style={[styles.container, styles.shadow]}>
                 <LinearGradient colors={['#2974FA', '#38ABFD', '#43D4FF']} style={styles.container}>
                     <Image
                         style={[styles.imageStyle]}
-                        source={{ uri: 'https://media.giphy.com/media/eCCrSLD02Eyys/giphy.gif' }}
+                        source={{ uri: 'https://i.pinimg.com/originals/f8/51/6b/f8516b9c0ee5497018254b2750042240.gif' }}
                     />
                     <TextInput
                         style={[styles.textInput, styles.marginItem]}
@@ -40,12 +44,16 @@ export class Login extends React.Component<LoginProps, LoginState> {
                         secureTextEntry={true}
                         placeholder={"Password"} />
                     <Text style={[styles.forgotPassword]}>Forgot Password?</Text>
-                    <Button style={[styles.loginButton, styles.marginItem]}>
+                    <Button
+                        style={[styles.loginButton, styles.marginItem]}
+                        onPress={() => { this.createAccountClick() }}>
                         <Text style={[styles.text]}>
                             LOGIN
                         </Text>
                     </Button>
-                    <Text style={[styles.text]}>Create Account</Text>
+                    <Text
+                        style={[styles.text]}
+                        onPress={() => this.createAccountClick}>Create Account</Text>
                 </LinearGradient>
             </View>
         )

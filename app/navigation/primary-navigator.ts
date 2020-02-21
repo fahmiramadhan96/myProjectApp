@@ -1,7 +1,7 @@
 import createNativeStackNavigator from "react-native-screens/createNativeStackNavigator"
 import {
-  CreateAccountScreen,
   LoginScreen,
+  CreateAccountScreen,
   WelcomeScreen,
   DemoScreen
 } from "../screens"
